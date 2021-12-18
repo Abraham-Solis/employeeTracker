@@ -90,7 +90,7 @@ function seeDepartments() {
 }
 
 
-//ADD Functions for Employees getting DB key's
+//ADD Functions for Employees getting DB key's 'name' needs to be same as DB
 
 function addEmployees() {
   inquirer.prompt([
@@ -135,7 +135,7 @@ function addEmployees() {
 }
 
 
-//ADD Functions for Role  getting DB key's
+//ADD Functions for Role  getting DB key's 'name' needs to be same as DB
 
 function addRole() {
   inquirer.prompt([
@@ -172,7 +172,7 @@ function addRole() {
     })
 }
 
-//ADD Functions for Department  getting DB key's
+//ADD Functions for Department getting DB key's 'name' needs to be same as DB
 
 function addDepartment() {
   inquirer.prompt([
