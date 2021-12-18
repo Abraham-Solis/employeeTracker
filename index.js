@@ -62,6 +62,7 @@ function seeEmployees() {
   db.query('SELECT * FROM employees', (err, employees) => {
     if (err) { console.log(err) }
     console.table(employees)
+    mainPrompt()
   })
 }
 
