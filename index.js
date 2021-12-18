@@ -195,10 +195,10 @@ function addDepartment() {
 
 //Update Roles for Employees
 
-function updateRole(newRole) {
-  db.query('UPDATE employees SET ? WHERE ? ', newRole, err => {
+function updateRole(updateEmployee) {
+  db.query('UPDATE employees SET ? WHERE ? ', updateEmployee, err => {
     if (err) { console.log(err) }
-    console.log('You updated their Role!')
+    console.log('You updated the Employee!')
   })
 }
 
