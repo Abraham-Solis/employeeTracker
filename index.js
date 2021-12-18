@@ -13,7 +13,7 @@ const mainPrompt = () => {
       type: 'list',
       name: 'choice',
       message: 'What would you like to do?',
-      choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add an Employee', 'Add a Role', 'Update Employee Roles',]
+      choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add an Employee', 'Add a Role', 'Update Employee Roles', 'Leave']
     },
   ])
 
@@ -46,7 +46,10 @@ const mainPrompt = () => {
           addRole()
           break;
 
-      
+        case 'Leave':
+          leave()
+          break;
+
       }
 
 
@@ -204,3 +207,9 @@ function updateRole(updateRole) {
   })
 }
 
+function leave() {
+  console.log('Need a moment....')
+  setTimeout((function () {
+    return process.exit(22);
+  }), 1000);
+}
