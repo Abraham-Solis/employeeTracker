@@ -5,7 +5,7 @@ const db = mysql.createConnection('mysql://root:rootroot@localhost:3306/users_db
 function seeEmployees = () => {
 db.query('SELECT * FROM employees', (err, employees) => {
   if (err) { console.log(err) }
-  console.log(employees)
+  console.table(employees)
 })
 }
 
@@ -14,7 +14,7 @@ db.query('SELECT * FROM employees', (err, employees) => {
 function seeRoles = () => {
   db.query('SELECT * FROM roles', (err, roles) => {
     if (err) { console.log(err) }
-    console.log(roles)
+    console.table(roles)
   })
 }
 
@@ -24,7 +24,7 @@ function seeRoles = () => {
 function seeDepartments = () => {
   db.query('SELECT * FROM departments', (err, departments) => {
     if (err) { console.log(err) }
-    console.log(departments)
+    console.table(departments)
   })
 }
 
@@ -34,7 +34,7 @@ function seeDepartments = () => {
 function addEmployees = (newEmployee) => {
   db.query('INSERT INTO employees SET ?', newEmployee, err => {
     if (err) { console.log(err) }
-    console.log(newEmployee)
+    console.log('You made an Employee!')
   })
 }
 
@@ -44,7 +44,7 @@ function addEmployees = (newEmployee) => {
 function addRole = (newRole) => {
   db.query('INSERT INTO roles SET ?', newRole, err => {
     if (err) { console.log(err) }
-    console.log(newRole)
+    console.log('You added a Role!')
   })
 }
 
@@ -53,7 +53,7 @@ function addRole = (newRole) => {
 function addDepartment = (newDepartment) => {
   db.query('INSERT INTO departments SET ?', newDepartment, err => {
     if (err) { console.log(err) }
-    console.log(newDepartment)
+    console.log('You added a Department!')
   })
 }
 
@@ -63,7 +63,7 @@ function addDepartment = (newDepartment) => {
 function updateRole = (newRole) => {
   db.query('UPDATE employees SET ? WHERE ? ', newRole, err => {
     if (err) { console.log(err) }
-    console.log(newRole)
+    console.log('You updated their Role!')
   })
 }
 
