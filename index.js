@@ -8,13 +8,19 @@ const db = require('./db');
 
 
 
-async function intialPrompt () {
-  const {data:employee} = await inquirer.prompt([
+
+
+ const mainPrompt = () => {
+  inquirer.prompt([
     {
       type: 'list',
       name: 'choice',
       message: 'What would you like to do?',
-      choices:['']
+      choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add a Employee', 'Add a Role', 'Update Employee Roles']
     },
-  ]);
+  ])
+
 }
+
+
+mainPrompt()

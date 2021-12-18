@@ -1,4 +1,5 @@
 const mysql = require('mysql2')
+const db = mysql.createConnection('mysql://root:rootroot@localhost:3306/users_db')
 
 //VIEW Functions for ALL employees
 function seeEmployees = () => {
@@ -41,7 +42,7 @@ function addEmployees = (newEmployee) => {
 //ADD Functions for Role
 
 function addRole = (newRole) => {
-  db.query('INSERT INTO employees SET ?', newRole, err => {
+  db.query('INSERT INTO roles SET ?', newRole, err => {
     if (err) { console.log(err) }
     console.log(newRole)
   })
@@ -50,9 +51,19 @@ function addRole = (newRole) => {
 //ADD Functions for Department
 
 function addDepartment = (newDepartment) => {
-  db.query('INSERT INTO employees SET ?', newDepartment, err => {
+  db.query('INSERT INTO departments SET ?', newDepartment, err => {
     if (err) { console.log(err) }
     console.log(newDepartment)
+  })
+}
+
+
+//Update Roles for Employees
+
+function updateRole = (newRole) => {
+  db.query('UPDATE employees SET ? WHERE ? ', newRole, err => {
+    if (err) { console.log(err) }
+    console.log(newRole)
   })
 }
 
