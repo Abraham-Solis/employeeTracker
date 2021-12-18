@@ -72,6 +72,7 @@ function seeRoles() {
   db.query('SELECT * FROM roles', (err, roles) => {
     if (err) { console.log(err) }
     console.table(roles)
+    mainPrompt()
   })
 }
 
