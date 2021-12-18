@@ -13,7 +13,7 @@ const mainPrompt = () => {
       type: 'list',
       name: 'choice',
       message: 'What would you like to do?',
-      choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add an Employee', 'Add a Role', 'Update Employee Roles']
+      choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add an Employee', 'Add a Role', 'Update Employee Roles',]
     },
   ])
 
@@ -45,6 +45,8 @@ const mainPrompt = () => {
         case 'Add a Role':
           addRole()
           break;
+
+      
       }
 
 
@@ -88,7 +90,7 @@ function seeDepartments() {
 }
 
 
-//ADD Functions for Employees 
+//ADD Functions for Employees getting DB key's
 
 function addEmployees() {
   inquirer.prompt([
@@ -133,7 +135,7 @@ function addEmployees() {
 }
 
 
-//ADD Functions for Role
+//ADD Functions for Role  getting DB key's
 
 function addRole() {
   inquirer.prompt([
@@ -170,7 +172,7 @@ function addRole() {
     })
 }
 
-//ADD Functions for Department
+//ADD Functions for Department  getting DB key's
 
 function addDepartment() {
   inquirer.prompt([
@@ -193,12 +195,12 @@ function addDepartment() {
 }
 
 
-//Update Roles for Employees
+//Update Roles for Employees (for later)
 
-function updateRole(updateEmployee) {
-  db.query('UPDATE employees SET ? WHERE ? ', updateEmployee, err => {
+function updateRole(updateRole) {
+  db.query('UPDATE employees SET ? WHERE ? ', updateRole, err => {
     if (err) { console.log(err) }
-    console.log('You updated the Employee!')
+    console.log('You updated the Employee Role!')
   })
 }
 
