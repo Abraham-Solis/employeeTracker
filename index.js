@@ -83,6 +83,7 @@ function seeDepartments() {
   db.query('SELECT * FROM departments', (err, departments) => {
     if (err) { console.log(err) }
     console.table(departments)
+    mainPrompt()
   })
 }
 
