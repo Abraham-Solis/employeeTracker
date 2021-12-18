@@ -41,6 +41,10 @@ const mainPrompt = () => {
         case 'Add an Employee':
           addEmployees()
           break;
+
+        case 'Add a Role':
+          addRole()
+          break;
       }
 
 
@@ -115,23 +119,52 @@ function addEmployees() {
     }
   ])
 
-  .then(newEmployee => {
-    console.log(newEmployee)
-  db.query('INSERT INTO employees SET ?', newEmployee, err => {
-    if (err) { console.log(err) }
-    console.log('You made an Employee!')
-    mainPrompt()
-  })})
+    .then(newEmployee => {
+      console.log(newEmployee)
+      db.query('INSERT INTO employees SET ?', newEmployee, err => {
+        if (err) { console.log(err) }
+        console.log('You made an Employee!')
+        mainPrompt()
+      })
+    })
 }
 
 
 //ADD Functions for Role
 
-function addRole(newRole) {
-  db.query('INSERT INTO roles SET ?', newRole, err => {
-    if (err) { console.log(err) }
-    console.log('You added a Role!')
-  })
+function addRole() {
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'title',
+      message: 'Please enter employees Title'
+
+
+    },
+
+    {
+      type: 'input',
+      name: 'salary',
+      message: 'Please enter employees Salary'
+
+    },
+
+    {
+      type: 'input',
+      name: 'department_id',
+      message: 'Please enter employees Role ID'
+
+    }
+
+  ])
+    .then(newRole => {
+      console.log(newRole)
+      db.query('INSERT INTO roles SET ?', newRole, err => {
+        if (err) { console.log(err) }
+        console.log('You added a Role!')
+        mainPrompt()
+      })
+    })
 }
 
 //ADD Functions for Department
