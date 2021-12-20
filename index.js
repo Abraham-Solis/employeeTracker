@@ -13,7 +13,7 @@ const mainPrompt = () => {
       type: 'list',
       name: 'choice',
       message: 'What would you like to do?',
-      choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add an Employee', 'Add a Role', 'Update Employee Roles', 'Leave']
+      choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add an Employee', 'Add a Role', 'Update Employee', 'Leave']
     },
   ])
 
@@ -49,6 +49,11 @@ const mainPrompt = () => {
         case 'Leave':
           leave()
           break;
+
+        case 'Update Employee':
+          updateRole()
+          break;
+
 
       }
 
@@ -200,10 +205,29 @@ function addDepartment() {
 
 //Update Roles for Employees (for later)
 
-function updateRole(updateRole) {
-  db.query('UPDATE employees SET ? WHERE ? ', updateRole, err => {
+function updateRole() {
+  db.query('SELECT * FROM employees', (err, employees) => {
     if (err) { console.log(err) }
-    console.log('You updated the Employee Role!')
+    console.table(employees)
+    inquirer.prompt([
+      {
+        type: 'input',
+        message: "Which employee would you like to update? (Enter the first name of the Employee)",
+        name: 'first_name'
+      },
+      {
+        type: 'input',
+        message: "What is the new Updated Role you would like to apply?",
+        name: 'role_id'
+      }
+    ])
+      .then(updateEmployee => {
+        db.query('UPDATE employees SET ? WHERE ?', [{ role_id: updateEmployee.role_id }, { first_name: updateEmployee.first_name }], () => {
+          if (err) { console.log(err) }
+          console.log('Employee Role Updated!')
+          mainPrompt()
+        })
+      })
   })
 }
 
